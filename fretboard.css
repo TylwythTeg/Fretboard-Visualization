@@ -51,7 +51,8 @@ h1 {
 .strings li {
     display: block;
     border-bottom: 1px solid #958963;
-    margin-bottom: 39px;
+    margin-bottom:  39px;
+   
 }
 
 .dots {
@@ -109,7 +110,6 @@ h1 {
     display: inline-block;
     margin: 0;
     margin-right: 49px;
-    border-bottom: none;
     background-color: rgb(209, 129, 14);
     border-radius: 50%;
     text-align: center;
@@ -120,9 +120,10 @@ h1 {
     width: 26px;
     color: white;
     text-shadow: 0px 1px 2px rgb(68, 68, 68);
-    
+     
     
 }
+
 
 /* special spacing for the 0th note */
 .notes li:nth-child(1) {
@@ -141,4 +142,9 @@ h1 {
     z-index: 0;
     box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
     
+}
+
+/* firefox margin workaround */
+.clear_div {
+    clear: both;
 }

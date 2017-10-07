@@ -7,6 +7,7 @@
         <h1>Guitar Fretboard Visualization</h1>
         
         <div class = "neck">
+            <!-- An instrument will always have 13 frets (12 and the open note) -->
             <ul class = "frets">
                 <li></li>
                 <li></li>
@@ -22,8 +23,11 @@
                 <li></li>
                 <li></li>
             </ul>
+            <!-- Clear div is a workaround...move to CSS -->
             <ul class = "strings">
-                <li><ul class = "notes">
+                <li>
+                    <div class = "clear_div"></div>
+                    <ul class = "notes">
                         <li>E</li>
                         <li>F</li>
                         <li>F#</li>
@@ -39,7 +43,9 @@
                         <li>E</li>
                     </ul>
                 </li>
-                <li><ul class = "notes">
+                <li>
+                    <div class = "clear_div"></div>
+                    <ul class = "notes">
                         <li>B</li>
                         <li>C</li>
                         <li>C#</li>
@@ -56,6 +62,7 @@
                     </ul>
                 </li>
                 <li>
+                    <div class = "clear_div"></div>
                     <ul class = "notes">
                         <li>G#</li>
                         <li>A</li>
@@ -73,6 +80,7 @@
                     </ul>
                 </li>
                 <li>
+                    <div class = "clear_div"></div>
                     <ul class = "notes">
                         <li>D</li>
                         <li>D#</li>
@@ -90,6 +98,7 @@
                     </ul>
                 </li>
                 <li>
+                    <div class = "clear_div"></div>
                     <ul class = "notes">
                         <li>A</li>
                         <li>A#</li>
@@ -107,6 +116,7 @@
                     </ul>
                 </li>
                 <li>
+                    <div class = "clear_div"></div>
                     <ul class = "notes">
                         <li>E</li>
                         <li>F</li>
@@ -125,9 +135,7 @@
                 </li>
             </ul>
             
-            <ul class = "notes">
-                
-            </ul>
+            
             
             
             
