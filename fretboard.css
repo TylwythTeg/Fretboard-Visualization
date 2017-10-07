@@ -10,6 +10,14 @@ h1 {
     width: 994px;
     height: 250px;
     box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+    
+    /* Make elements on neck unselectable*/
+    /* And normal cursor by default */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 }
 
 
@@ -21,11 +29,13 @@ h1 {
     background-color: rgb(215, 214, 214);
     display: inline-block;
     border-right: 2px solid #686868;
+    
 }
 
 /* special spacing for the 0th fret */
 .frets:nth-child(1) {
     margin-left: -73px;
+    
 }
 
 .strings {
@@ -41,7 +51,7 @@ h1 {
 .strings li {
     display: block;
     border-bottom: 1px solid #958963;
-    margin-bottom: 39px
+    margin-bottom: 39px;
 }
 
 .dots {
@@ -51,6 +61,7 @@ h1 {
     height: 16px;
     
     top: 40%;
+    
 }
 
 .dots li {
@@ -80,5 +91,54 @@ h1 {
     background: rgb(173, 170, 164);
     margin-bottom: 63px;
     
+    
+}
+
+.notes {
+    position: relative;
+    top: -1em;
+    left: -72px;
+    width: 1200px;
+    height: 0px;
+    
+    z-index: 1;
+}
+
+
+.notes li {
+    display: inline-block;
+    margin: 0;
+    margin-right: 49px;
+    border-bottom: none;
+    background-color: rgb(209, 129, 14);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    font-size: 16px;
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.75);
+    height: 26px;
+    width: 26px;
+    color: white;
+    text-shadow: 0px 1px 2px rgb(68, 68, 68);
+    
+    
+}
+
+/* special spacing for the 0th note */
+.notes li:nth-child(1) {
+    margin-right: 27px;
+    
+}
+
+
+
+.nut {
+    position: absolute;
+    background-color: rgb(170, 165, 148);
+    left: 24px;
+    width: 20px;
+    height: 100%;
+    z-index: 0;
+    box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
     
 }
