@@ -147,7 +147,8 @@ h1 {
 
 /* special spacing for the 0th note */
 .notes li:nth-child(1) {
-    margin-right: 27px;
+    margin-right: 36px;
+    margin-left: -9px;
     
 }
 
