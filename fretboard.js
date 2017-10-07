@@ -1,10 +1,4 @@
-function isElement(element) {
-    // works on major browsers back to IE7
-    return element instanceof Element;  
-}
-
-
-// E Major Scale Object
+// Dummy E Major Scale Object
 var eMajorScale = {
     object: "scale",
     root: "E",
@@ -19,7 +13,7 @@ var eMajorScale = {
     ]
 };
 
-// Fretboard Object of E,A,D,G,B,E
+// Dummy Fretboard Object of Tuning E,A,D,G,B,E
 var fretboard = {
     object: "fretboard",
     strings: [
