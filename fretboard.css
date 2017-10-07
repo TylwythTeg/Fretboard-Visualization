@@ -134,9 +134,9 @@ h1 {
 
 .nut {
     position: absolute;
-    background-color: rgb(170, 165, 148);
-    left: 24px;
-    width: 20px;
+    background-color: rgb(216, 210, 192);
+    left: 36px;
+    width: 10px;
     height: 100%;
     z-index: 0;
     box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
