@@ -1,0 +1,84 @@
+h1 {
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.neck {
+    position: relative;
+    margin: 20px auto;
+    background-color: rgb(40, 31, 18);
+    width: 994px;
+    height: 250px;
+    box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+}
+
+
+.frets li {
+    float: left;
+    width 3px;
+    height: 250px;
+    margin-left: 77px;
+    background-color: rgb(215, 214, 214);
+    display: inline-block;
+    border-right: 2px solid #686868;
+}
+
+/* special spacing for the 0th fret */
+.frets:nth-child(1) {
+    margin-left: -73px;
+}
+
+.strings {
+    position: absolute;
+    top: 8px;
+    left: 6;
+    width: 948px;
+    height: 100%;
+    
+    
+}
+
+.strings li {
+    display: block;
+    border-bottom: 1px solid #958963;
+    margin-bottom: 39px
+}
+
+.dots {
+    position: absolute;
+    left: 194px;
+    width: 660px;
+    height: 16px;
+    
+    top: 40%;
+}
+
+.dots li {
+    float:left;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgb(173, 170, 164);
+    margin-right:142px;
+}
+
+/* multi dot */
+.dots_multi {
+    position: absolute;
+    left: 906px;
+    width: 660px;
+    top: 24%;
+    height: 100%
+}
+
+.dots_multi li {
+    width: 16px;
+    height: 16px;
+    display: block;
+    border-radius: 50%;
+    background: rgb(173, 170, 164);
+    margin-bottom: 63px;
+    
+    
+}
