@@ -1,3 +1,5 @@
+
+
 h1 {
     text-align: center;
     margin: 0.5em 0;
@@ -7,7 +9,7 @@ h1 {
     position: relative;
     margin: 20px auto;
     background-color: rgb(40, 31, 18);
-    width: 994px;
+    width: 993px;
     height: 250px;
     box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
     
@@ -18,13 +20,27 @@ h1 {
     -ms-user-select: none;
     user-select: none;
     cursor: default;
+    
+    overflow: hidden;
+    
+}
+
+/* Neck minus 0 fret is 954px */
+.frets {
+    position: absolute;
+    top: 0;
+    left: 86px;
+    width: 1200px;
+    height: 100%;
+    overflow: visible;
 }
 
 
 .frets li {
-    float: left;
     width 3px;
-    height: 250px;
+    float: left;
+    height: 103%;
+    margin-top: -2%;
     margin-left: 77px;
     background-color: rgb(215, 214, 214);
     display: inline-block;
@@ -34,7 +50,8 @@ h1 {
 
 /* special spacing for the 0th fret */
 .frets:nth-child(1) {
-    margin-left: -73px;
+    margin-left: -160px;
+    border-right: none;
     
 }
 
@@ -78,8 +95,8 @@ h1 {
 /* multi dot */
 .dots_multi {
     position: absolute;
-    left: 906px;
-    width: 660px;
+    left: 100px;
+    width: 820px;
     top: 24%;
     height: 100%
 }
@@ -91,6 +108,9 @@ h1 {
     border-radius: 50%;
     background: rgb(173, 170, 164);
     margin-bottom: 63px;
+    float: right;
+    clear: right;
+    
     
     
 }
@@ -141,6 +161,7 @@ h1 {
     height: 100%;
     z-index: 0;
     box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+    
     
 }
 
