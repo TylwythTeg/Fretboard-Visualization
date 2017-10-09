@@ -134,6 +134,12 @@ var fretboard = {
     ]
 };
 
+/* We can just reverse the small array */
+console.log(fretboard.strings.reverse());
+
+
+
+
 
 // C
 console.log(fretboard.strings[4].notes[1]);
@@ -211,6 +217,4 @@ for (child in strings.children) {
     i--;
 }
 
-
-console.log(strings);
 
