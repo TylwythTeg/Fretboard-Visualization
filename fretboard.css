@@ -9,7 +9,7 @@ h1 {
     margin: 20px auto;
     background-color: rgb(40, 31, 18);
     width: 993px;
-    height: 250px;
+    height: 246px;
     box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
     
     /* Make elements on neck unselectable*/
@@ -128,7 +128,7 @@ h1 {
 .notes li {
     display: inline-block;
     margin: 0;
-    margin-right: 49px;
+    margin-right: 53px;
     background-color: rgb(209, 129, 14);
     border-radius: 50%;
     text-align: center;
@@ -146,9 +146,13 @@ h1 {
 
 /* special spacing for the 0th note */
 .notes li:nth-child(1) {
-    margin-right: 36px;
-    margin-left: -9px;
-    
+    margin-right: 43px;
+    margin-left: -4px;
+    height: 18px;
+    width: 18px;
+    line-height: 20px;
+    font-size: 12px;
+    background-color: rgb(119, 171, 175);
 }
 
 
