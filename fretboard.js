@@ -157,7 +157,6 @@ function addChild(parent, child, attributes) {
 
 
 
-
 var neckElem = document.getElementsByClassName("neck")[0];
 
 var VisualFretboard = function (fretboard, element) {
@@ -166,29 +165,34 @@ var VisualFretboard = function (fretboard, element) {
     this.fretboard = fretboard;
     this.tuning = fretboard.tuning;
     this.element = element;
+    this.stringContainer = findStringContainer();
     
+    createStrings();
+    createNoteContainers();
+    generateNotesOnStrings();
+    
+    /* method definitions */
     function findStringContainer () {
         var children = element.children;
+        var container = [];
         for (i = 0; i < children.length; i++) {
             var child = children[i];
             if(child.classList.contains("strings")) {
-                that.stringContainer = child;
+                container = child;
             }
         }
+        return container;
     }
-    findStringContainer();
     
     function createStrings () {
         var stringContainer = that.stringContainer;
-        var strings = this.fretboard.strings.slice().reverse();
-        that.strings = strings;
+        var strings = that.fretboard.strings.slice().reverse();
         
         for (var i = 0; i < strings.length; i++) {
             var child = addChild(stringContainer, "li", {"data-note": strings[i].openNote});
             
         }
     }
-    createStrings();
     
     
     function createNoteContainers () {
@@ -202,7 +206,7 @@ var VisualFretboard = function (fretboard, element) {
             that.noteContainers.push(child);
         }
     }
-    createNoteContainers();
+    
 
     function createNotes(container, string) {
         for (var i = 0; i < string.notes.length; i++) {
@@ -211,40 +215,17 @@ var VisualFretboard = function (fretboard, element) {
         }
     }
     
-    /*
-    function findNoteContainers () {
-        var strings = that.stringContainer.children;
-        var containers = [];
-        console.log("t");
-        console.log(strings);
-        for (var i = 0; i < strings.length ; i++) {
-            
-            var ul = strings[i].children;
-            console.log(ul);
-            for (var j = 0; j < ul.length; j++) {
-                    console.log(ul[j]);
-                if (ul[j].classList.contains("notes") === true) {
-                    containers.push(ul[j]);
-                    console.log(ul[j]);
-                }
-            }
-           //containers.push(strings[i]);
-        }
-        that.noteContainers = containers;
-    }
-    findNoteContainers();*/
-    
     function generateNotesOnStrings () {
         var containers = that.noteContainers;
         console.log(containers);
-        var strings = that.strings;
+        var strings = that.fretboard.strings;
         for (var i = 0; i < containers.length; i++ ) {
             console.log(strings);
             console.log(i);
             createNotes(containers[i], strings[i] );
         }
     }
-    generateNotesOnStrings();
+    
     
     
     
@@ -252,8 +233,8 @@ var VisualFretboard = function (fretboard, element) {
     
 }
 
-vFretboard = new VisualFretboard(fretboard, neckElem);
-console.log(vFretboard);
+vf = new VisualFretboard(fretboard, neckElem);
+console.log(vf);
 
 
 /* update heights in CSS of elements according to num of strings */
@@ -268,14 +249,14 @@ function updateHeights(vFretboard) {
         "7": "286px",
     };
     
-    var num = vFretboard.strings.length;
+    var num = vf.fretboard.strings.length;
     
     //var neck = document.getElementsByClassName("neck");
     var neck = vFretboard.element;
     neck.style.height = pixels[num];
 }
 
-updateHeights(vFretboard);
+updateHeights(vf);
 
 
 
