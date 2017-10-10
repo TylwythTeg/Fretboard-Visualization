@@ -16,6 +16,7 @@ var eMajorScale = {
 // Dummy Fretboard Object of Tuning E,A,D,G,B,E
 var fretboard = {
     object: "fretboard",
+    tuning: ["E", "A", "D", "G", "B", "E"],
     strings: [
         {
             object: "guitar_string",
@@ -131,6 +132,7 @@ var fretboard = {
                 "E"
             ]
         }
+        
     ]
 };
 
@@ -142,6 +144,9 @@ var fretboard = {
 /*      as they point to the same object references         */
 strings = fretboard.strings.slice().reverse();
 console.log(strings);
+
+
+
 
 
 // expect "div"
@@ -156,6 +161,8 @@ function addChild(parent, child, attributes) {
     parent.appendChild(child);
     return child;
 }
+
+
 
 
 /* Right now we are only set up for one fretboard per page      */
@@ -178,6 +185,7 @@ function generateStrings () {
 generateStrings();
 
 /* Generate note container */
+/* This can be done with a  */
 function generateNoteContainers () {
     var stringElements = stringsContainer.children;
     for (var i = 0; i < stringElements.length; i++) {
@@ -192,19 +200,14 @@ generateNoteContainers();
 
 /* The fun part: Generating notes on each string */
 function note_generators() {
-    // Closure that uses i from the for loop
     function generateNotes(container) {
         var string = strings[i];
         for (var j = 0; j < string.notes.length; j++) {
             var child = addChild(container, "li");
             child.textContent = string.notes[j];
         }
-        
     }
-    
-    // note if we scale to multiple fretboards this will need to change
     var noteContainers = document.getElementsByClassName("notes");
-    
     for (var i = 0; i < noteContainers.length; i++ ) {
         generateNotes(noteContainers[i]);
     }
@@ -214,6 +217,8 @@ note_generators();
 
 
 /* update heights in CSS of elements according to num of strings */
+/* Change this to set CSS classes for each height */
+/*    neck.height */
 function updateHeights() {
     
     var pixels = {
@@ -230,5 +235,103 @@ function updateHeights() {
 }
 
 updateHeights();
+
+
+
+
+
+
+
+
+
+var neckElem = document.getElementsByClassName("neck")[0];
+
+var VisualFretboard = function (fretboard, element) {
+    var that = this;
+    
+    this.fretboard = fretboard;
+    this.tuning = fretboard.tuning;
+    this.element = element;
+    
+    function findStringContainer () {
+        var children = element.children;
+        for (i = 0; i < children.length; i++) {
+            var child = children[i];
+            if(child.classList.contains("strings")) {
+                that.stringContainer = child;
+            }
+        }
+    }
+    findStringContainer();
+    
+    function createStrings () {
+        var stringContainer = that.stringContainer;
+        var strings = this.fretboard.strings.slice().reverse();
+        that.strings = strings;
+        
+        console.log(stringContainer);
+        for (var i = 0; i < strings.length; i++) {
+            var child = addChild(stringContainer, "li", {"data-note": strings[i].openNote});
+            console.log(child);
+            
+        }
+    }
+    createStrings();
+    
+    var TEST_CONSTANT = 6;
+    
+    function createNoteContainers () {
+        var stringElements = that.stringContainer.children;
+        for (var i = 0; i < stringElements.length; i++) {
+            var string = stringElements[i];
+            // ".clear_div" firefox margin workaround
+            addChild(string, "div", {"class": "clear_div"});
+            addChild(string, "ul", {"class": "notes"});
+        }  
+    }
+    createNoteContainers();
+
+    function createNotes(container, string) {
+        for (var i = 0; i < string.notes.length; i++) {
+            var child = addChild(container, "li");
+            child.textContent = string.notes[i];
+        }
+    }
+    
+    function findNoteContainers () {
+        var strings = that.stringContainer.children;
+        var containers = [];
+        for (var i = 0; i < strings.length ; i++) {
+            containers.push(strings[i]);
+        }
+        that.noteContainers = containers;
+    }
+    findNoteContainers();
+    
+    function generateNotesOnStrings () {
+        var containers = that.noteContainers;
+        console.log(containers);
+        var strings = that.strings;
+        for (var i = 0; i < containers.length; i++ ) {
+            console.log(strings);
+            console.log(i);
+            createNotes(containers[i], strings[i] );
+        }
+    }
+    generateNotesOnStrings();
+    
+    
+    
+    
+    
+}
+
+vFretboard = new VisualFretboard(fretboard, neckElem);
+console.log(vFretboard);
+
+
+
+
+
 
 

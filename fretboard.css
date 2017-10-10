@@ -56,7 +56,8 @@ h1 {
 
 .strings {
     position: absolute;
-    top: 8px;
+    //top: 10px;
+    top: 4%;
     left: 6;
     width: 948px;
     height: 100%;
@@ -67,7 +68,8 @@ h1 {
 .strings li {
     display: block;
     border-bottom: 1px solid #958963;
-    margin-bottom:  39px;
+    //margin-bottom:  39px;
+    margin-bottom:  4%;
    
 }
 
