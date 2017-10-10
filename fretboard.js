@@ -259,7 +259,7 @@ console.log(vFretboard);
 /* update heights in CSS of elements according to num of strings */
 /* Change this to set CSS classes for each height */
 /*    neck.height */
-function updateHeights() {
+function updateHeights(vFretboard) {
     
     var pixels = {
         "4": "166px",
