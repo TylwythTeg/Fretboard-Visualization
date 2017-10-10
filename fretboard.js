@@ -183,25 +183,24 @@ var VisualFretboard = function (fretboard, element) {
         var strings = this.fretboard.strings.slice().reverse();
         that.strings = strings;
         
-        console.log(stringContainer);
         for (var i = 0; i < strings.length; i++) {
             var child = addChild(stringContainer, "li", {"data-note": strings[i].openNote});
-            console.log(child);
             
         }
     }
     createStrings();
     
-    var TEST_CONSTANT = 6;
     
     function createNoteContainers () {
         var stringElements = that.stringContainer.children;
+        that.noteContainers = [];
         for (var i = 0; i < stringElements.length; i++) {
             var string = stringElements[i];
             // ".clear_div" firefox margin workaround
             addChild(string, "div", {"class": "clear_div"});
-            addChild(string, "ul", {"class": "notes"});
-        }  
+            var child = addChild(string, "ul", {"class": "notes"});
+            that.noteContainers.push(child);
+        }
     }
     createNoteContainers();
 
@@ -212,6 +211,7 @@ var VisualFretboard = function (fretboard, element) {
         }
     }
     
+    /*
     function findNoteContainers () {
         var strings = that.stringContainer.children;
         var containers = [];
@@ -232,7 +232,7 @@ var VisualFretboard = function (fretboard, element) {
         }
         that.noteContainers = containers;
     }
-    findNoteContainers();
+    findNoteContainers();*/
     
     function generateNotesOnStrings () {
         var containers = that.noteContainers;
