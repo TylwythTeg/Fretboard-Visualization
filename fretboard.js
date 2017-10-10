@@ -139,16 +139,6 @@ var fretboard = {
 
 
 
-/*      We can just reverse a copy of the strings.          */
-/*      Note that the array's elements are still the same   */
-/*      as they point to the same object references         */
-strings = fretboard.strings.slice().reverse();
-console.log(strings);
-
-
-
-
-
 // expect "div"
 // eg addChild(stringsContainer, "li", {"data-note": "Z"});
 function addChild(parent, child, attributes) {
@@ -161,82 +151,6 @@ function addChild(parent, child, attributes) {
     parent.appendChild(child);
     return child;
 }
-
-
-
-
-/* Right now we are only set up for one fretboard per page      */
-/* I definitely would not want to be limited to one ultimately  */
-/* But this is a good place to start  */
-
-/* Get Unordered List Element */
-var stringsContainer= document.getElementById("strings");
-console.dir(stringsContainer);
-
-/* generates String list items */
-function generateStrings () {
-    var stringsContainer = document.getElementById("strings");
-    
-    for (var i = 0; i < strings.length; i++) {
-        var string = strings[i];
-        addChild(stringsContainer, "li", {"data-note": string.openNote})
-    }
-}
-generateStrings();
-
-/* Generate note container */
-/* This can be done with a  */
-function generateNoteContainers () {
-    var stringElements = stringsContainer.children;
-    for (var i = 0; i < stringElements.length; i++) {
-        var string = stringElements[i];
-        // ".clear_div" firefox margin workaround
-        addChild(string, "div", {"class": "clear_div"});
-        addChild(string, "ul", {"class": "notes"});
-    }  
-}
-
-generateNoteContainers();
-
-/* The fun part: Generating notes on each string */
-function note_generators() {
-    function generateNotes(container) {
-        var string = strings[i];
-        for (var j = 0; j < string.notes.length; j++) {
-            var child = addChild(container, "li");
-            child.textContent = string.notes[j];
-        }
-    }
-    var noteContainers = document.getElementsByClassName("notes");
-    for (var i = 0; i < noteContainers.length; i++ ) {
-        generateNotes(noteContainers[i]);
-    }
-}
-
-note_generators();
-
-
-/* update heights in CSS of elements according to num of strings */
-/* Change this to set CSS classes for each height */
-/*    neck.height */
-function updateHeights() {
-    
-    var pixels = {
-        "4": "166px",
-        "5": "206px",
-        "6": "246px",
-        "7": "286px",
-    };
-    
-    var num = strings.length;
-    
-    var neck = document.getElementsByClassName("neck");
-    neck[0].style.height = pixels[num];
-}
-
-updateHeights();
-
-
 
 
 
@@ -301,8 +215,20 @@ var VisualFretboard = function (fretboard, element) {
     function findNoteContainers () {
         var strings = that.stringContainer.children;
         var containers = [];
+        console.log("t");
+        console.log(strings);
         for (var i = 0; i < strings.length ; i++) {
-            containers.push(strings[i]);
+            
+            var ul = strings[i].children;
+            console.log(ul);
+            for (var j = 0; j < ul.length; j++) {
+                    console.log(ul[j]);
+                if (ul[j].classList.contains("notes") === true) {
+                    containers.push(ul[j]);
+                    console.log(ul[j]);
+                }
+            }
+           //containers.push(strings[i]);
         }
         that.noteContainers = containers;
     }
@@ -330,8 +256,26 @@ vFretboard = new VisualFretboard(fretboard, neckElem);
 console.log(vFretboard);
 
 
+/* update heights in CSS of elements according to num of strings */
+/* Change this to set CSS classes for each height */
+/*    neck.height */
+function updateHeights() {
+    
+    var pixels = {
+        "4": "166px",
+        "5": "206px",
+        "6": "246px",
+        "7": "286px",
+    };
+    
+    var num = vFretboard.strings.length;
+    
+    //var neck = document.getElementsByClassName("neck");
+    var neck = vFretboard.element;
+    neck.style.height = pixels[num];
+}
 
-
+updateHeights(vFretboard);
 
 
 
