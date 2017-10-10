@@ -139,8 +139,8 @@ var fretboard = {
 
 
 
-// expect "div"
-// eg addChild(stringsContainer, "li", {"data-note": "Z"});
+
+// addChild(container, "li", {"class": "child"});
 function addChild(parent, child, attributes) {
     child = document.createElement(child);
     if (attributes) {
@@ -217,11 +217,8 @@ var VisualFretboard = function (fretboard, element) {
     
     function generateNotesOnStrings () {
         var containers = that.noteContainers;
-        console.log(containers);
         var strings = that.fretboard.strings;
         for (var i = 0; i < containers.length; i++ ) {
-            console.log(strings);
-            console.log(i);
             createNotes(containers[i], strings[i] );
         }
     }
