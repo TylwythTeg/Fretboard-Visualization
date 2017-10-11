@@ -207,17 +207,36 @@ var VisualFretboard = function (fretboard, element) {
         }
     }
     
+    /*
+    function setVisibility(child) {
+        var note = child.textContent;
+        if (!(eMajorScale.notes.includes(string.notes[i])) ) {
+                child.classList.toggle("invisible");
+        }
+    }*/
+    
 
     function createNotes(container, string) {
         for (var i = 0; i < string.notes.length; i++) {
             var child = addChild(container, "li");
             child.textContent = string.notes[i];
+            
+            console.log("tes");
+            console.log(eMajorScale);
+            console.log(string.notes[i]);
+            console.log(string.notes[i] in eMajorScale.notes);
+            
+            //setVisibility(child);
+            
+            if (!(eMajorScale.notes.includes(string.notes[i])) ) {
+                child.classList.toggle("invisible");
+            }
         }
     }
     
     function generateNotesOnStrings () {
         var containers = that.noteContainers;
-        var strings = that.fretboard.strings;
+        var strings = that.fretboard.strings.slice().reverse();
         for (var i = 0; i < containers.length; i++ ) {
             createNotes(containers[i], strings[i] );
         }
