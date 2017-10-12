@@ -166,9 +166,9 @@ var VisualFretboard = function (fretboard, element) {
     this.tuning = fretboard.tuning;
     this.element = element;
     this.stringContainer = findStringContainer();
-    this.stringTr = [];
     
     createStrings();
+    createNoteContainers();
     generateNotesOnStrings();
     
     /* method definitions */
@@ -189,12 +189,12 @@ var VisualFretboard = function (fretboard, element) {
         var strings = that.fretboard.strings.slice().reverse();
         
         for (var i = 0; i < strings.length; i++) {
-            var child = addChild(stringContainer, "tr", {"data-note": strings[i].openNote});
-            that.stringTr.push(child);
+            var child = addChild(stringContainer, "li", {"data-note": strings[i].openNote});
+            
         }
     }
     
-    /*
+    
     function createNoteContainers () {
         var stringElements = that.stringContainer.children;
         that.noteContainers = [];
@@ -205,7 +205,7 @@ var VisualFretboard = function (fretboard, element) {
             var child = addChild(string, "ul", {"class": "notes"});
             that.noteContainers.push(child);
         }
-    }*/
+    }
     
     /*
     function setVisibility(child) {
@@ -218,19 +218,15 @@ var VisualFretboard = function (fretboard, element) {
 
     function createNotes(container, string) {
         for (var i = 0; i < string.notes.length; i++) {
+            var child = addChild(container, "li");
+            child.textContent = string.notes[i];
             
-            
-            //console.log("tes");
-            //console.log(eMajorScale);
-            //console.log(string.notes[i]);
-            //console.log(string.notes[i] in eMajorScale.notes);
+            console.log("tes");
+            console.log(eMajorScale);
+            console.log(string.notes[i]);
+            console.log(string.notes[i] in eMajorScale.notes);
             
             //setVisibility(child);
-            
-            var td = addChild(container, "td", {"class": "frets"});
-            
-            var child = addChild(td, "td", {"class": "notes"});
-            child.textContent = string.notes[i];
             
             if (!(eMajorScale.notes.includes(string.notes[i])) ) {
                 child.classList.toggle("invisible");
@@ -239,7 +235,7 @@ var VisualFretboard = function (fretboard, element) {
     }
     
     function generateNotesOnStrings () {
-        var containers = that.stringTr;
+        var containers = that.noteContainers;
         var strings = that.fretboard.strings.slice().reverse();
         for (var i = 0; i < containers.length; i++ ) {
             createNotes(containers[i], strings[i] );
@@ -277,6 +273,3 @@ function updateHeights(vFretboard) {
 }
 
 updateHeights(vf);
-
-
-
