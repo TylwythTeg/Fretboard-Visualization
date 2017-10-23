@@ -3,16 +3,76 @@ var eMajorScale = {
     object: "scale",
     root: "E",
     notes: [
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "A#",
+        "C",
+        "C#",
+    ]
+};
+
+var eMajorScale = {
+    object: "scale",
+    root: "E",
+    notes: [
+        "D",
+        "E",
+        "F#",
+        "G",
+        "A",
+        "B",
+        "C#",
+        "D",
+    ]
+};
+
+var eMajorScale = {
+    object: "scale",
+    root: "E",
+    notes: [
         "E",
         "F#",
         "G#",
         "A",
         "B",
         "C#",
-        "D#"
+        "D#",
+        "E",
     ]
 };
 
+var eMajorScale = {
+    object: "scale",
+    root: "E",
+    notes: [
+        "E",
+        "F",
+        "F#",
+        "G",
+        "A",
+        "C",
+        "C#",
+        "D",
+        "B"
+    ]
+};
+
+var eMajorScale = {
+    object: "scale",
+    root: "E",
+    notes: [
+        "E",
+        "G#",
+        "A",
+        "C#",
+        "B",
+        "F#",
+        "D#",
+    ]
+};
 // Dummy Fretboard Object of Tuning E,A,D,G,B,E
 var fretboard = {
     object: "fretboard",
@@ -185,12 +245,22 @@ var VisualFretboard = function (fretboard, element) {
     }
     
     function createStrings () {
+        that.strings = [];
+        
         var stringContainer = that.stringContainer;
         var strings = that.fretboard.strings.slice().reverse();
         
         for (var i = 0; i < strings.length; i++) {
             var child = addChild(stringContainer, "li", {"data-note": strings[i].openNote});
             
+            /* create a new v_String object for v_fretboard */
+            var string = {
+                object: "visual_string",
+                element: child,
+                notes: []
+            }
+            
+            that.strings.push(string);
         }
     }
     
@@ -216,20 +286,29 @@ var VisualFretboard = function (fretboard, element) {
     }*/
     
 
-    function createNotes(container, string) {
+    function createNotes(vis_string, container, string) {
+        that.noteElements = [];
         for (var i = 0; i < string.notes.length; i++) {
             var child = addChild(container, "li");
             child.textContent = string.notes[i];
             
-            console.log("tes");
-            console.log(eMajorScale);
-            console.log(string.notes[i]);
-            console.log(string.notes[i] in eMajorScale.notes);
+            that.noteElements.push(child);
+            
+            /* update v_fretboard's string object to have the notes */
+            //console.log(that.strings[0]);
+            vis_string.notes.push(child);
+            
+            //console.log("tes");
+            //console.log(eMajorScale);
+            //console.log(string.notes[i]);
+            //console.log(string.notes[i] in eMajorScale.notes);
             
             //setVisibility(child);
             
             if (!(eMajorScale.notes.includes(string.notes[i])) ) {
-                child.classList.toggle("invisible");
+                child.classList.add("invisible");
+            } else {
+                child.classList.remove("invisible");
             }
         }
     }
@@ -238,12 +317,54 @@ var VisualFretboard = function (fretboard, element) {
         var containers = that.noteContainers;
         var strings = that.fretboard.strings.slice().reverse();
         for (var i = 0; i < containers.length; i++ ) {
-            createNotes(containers[i], strings[i] );
+            createNotes(that.strings[i],containers[i], strings[i]);
         }
     }
     
     
+    that.toggleNote = function (note) {
+        console.log(that.noteElements);
+        /* for each string */
+        for (var i = 0; i < that.strings.length; i++) {
+            var notes = that.strings[i].notes;
+            
+            /* for each note */
+            for (var j = 0; j < notes.length; i++) {
+                console.log(element);
+                if (note === notes[j].textContent) {
+                    notes[j].classList.toggle("invisible");
+                }
+            }
+        }
+        
+        /*
+        for (var i = 0; i < that.noteElements.length; i++) {
+            var element = that.noteElements[i];
+            console.log(element);
+            if (note === element.textContent) {
+                element.classList.toggle("invisible");
+            }
+        }*/
+        
+    };
     
+    
+    
+    function enableClickToggle() {
+        var listener = function(event) {
+            //event.target.classList.toggle("invisible");
+            console.log(that);
+            var note = event.target.textContent;
+            that.toggleNote(note);
+        };
+
+        var elems = that.noteContainers;
+        for(var i = 0; i < elems.length; i++) {
+            elems[i].addEventListener('click', listener);
+        }
+    }
+
+    enableClickToggle();
     
     
     
@@ -273,3 +394,7 @@ function updateHeights(vFretboard) {
 }
 
 updateHeights(vf);
+
+
+
+    

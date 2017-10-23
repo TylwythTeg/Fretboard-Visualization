@@ -4,6 +4,10 @@ h1 {
     
 }
 
+body {
+    margin:0;
+}
+
 .neck {
     position: relative;
     margin: 20px auto;
@@ -181,11 +185,24 @@ h1 {
 
 
 .notes .invisible {
-    visibility: hidden;
+    opacity: 0;
 }
 
 .notes .invisible:nth-child(1) {
-    visibility: visible;
+    opacity: 100;
     background-color: rgb(29, 49, 51);
     color: rgb(86, 117, 119);
+}
+
+
+
+.new_container {
+    margin: 20px auto;
+    width: 993px;
+}
+
+.sub_container {
+    display: inline-block;
+    background-color: brown;
+    width: 33%;
 }
