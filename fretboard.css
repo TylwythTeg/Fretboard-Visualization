@@ -1,4 +1,6 @@
-h1 {
+
+            
+            h1 {
     text-align: center;
     margin: 0.5em 0;
     
@@ -135,7 +137,7 @@ body {
 .notes li {
     display: inline-block;
     margin: 0;
-    margin-right: 53px;
+    margin-right: 49px;
     background-color: rgb(209, 129, 14);
     border-radius: 50%;
     text-align: center;
@@ -154,7 +156,7 @@ body {
 
 /* special spacing for the 0th note */
 .notes li:nth-child(1) {
-    margin-right: 43px;
+    margin-right: 39px;
     margin-left: -4px;
     height: 18px;
     width: 18px;
@@ -206,3 +208,35 @@ body {
     background-color: brown;
     width: 33%;
 }
+
+
+
+.note_list_container {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+}
+.note_list {
+
+    list-style-type: none;
+    display: flex;
+    margin: 40px auto 0 auto;
+    flex: 1;
+    justify-content: space-between;
+
+}
+
+.note_list li {
+
+    //flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-basis: 30%;
+    text-align: center;
+}
+
+.note_list li span {
+    padding: 20px;
+    background-color: red;
+}
+            
