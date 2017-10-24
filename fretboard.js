@@ -1,78 +1,5 @@
-// Dummy E Major Scale Object
-var eMajorScale = {
-    object: "scale",
-    root: "E",
-    notes: [
-        "D",
-        "E",
-        "F",
-        "G",
-        "A",
-        "A#",
-        "C",
-        "C#",
-    ]
-};
+scale = {'root': 'E', 'notes': ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#'], 'intervals': ['Second', 'Major Third', 'Fourth', 'Fifth', 'Sixth', 'Major Seventh'], 'interval_dict': {'E': 'Unison', 'F#': 'Second', 'G#': 'Major Third', 'A': 'Fourth', 'B': 'Fifth', 'C#': 'Sixth', 'D#': 'Major Seventh'}, 'triads': {'E': '[{"root": "E", "notes": ["E", "G#", "B"], "intervals": ["Major Third", "Fifth"], "interval_dict": {"G#": "Major Third", "B": "Fifth"}, "name": "E Major"}, {"root": "E", "notes": ["E", "F#", "B"], "intervals": ["Second", "Fifth"], "interval_dict": {"F#": "Second", "B": "Fifth"}, "name": "E Suspended Two"}, {"root": "E", "notes": ["E", "A", "B"], "intervals": ["Fourth", "Fifth"], "interval_dict": {"A": "Fourth", "B": "Fifth"}, "name": "E Suspended Four"}]', 'F#': '[{"root": "F#", "notes": ["F#", "A", "C#"], "intervals": ["Minor Third", "Fifth"], "interval_dict": {"A": "Minor Third", "C#": "Fifth"}, "name": "F# Minor"}, {"root": "F#", "notes": ["F#", "G#", "C#"], "intervals": ["Second", "Fifth"], "interval_dict": {"G#": "Second", "C#": "Fifth"}, "name": "F# Suspended Two"}, {"root": "F#", "notes": ["F#", "B", "C#"], "intervals": ["Fourth", "Fifth"], "interval_dict": {"B": "Fourth", "C#": "Fifth"}, "name": "F# Suspended Four"}]', 'G#': '[{"root": "G#", "notes": ["G#", "B", "D#"], "intervals": ["Minor Third", "Fifth"], "interval_dict": {"B": "Minor Third", "D#": "Fifth"}, "name": "G# Minor"}, {"root": "G#", "notes": ["G#", "C#", "D#"], "intervals": ["Fourth", "Fifth"], "interval_dict": {"C#": "Fourth", "D#": "Fifth"}, "name": "G# Suspended Four"}]', 'A': '[{"root": "A", "notes": ["A", "C#", "E"], "intervals": ["Major Third", "Fifth"], "interval_dict": {"C#": "Major Third", "E": "Fifth"}, "name": "A Major"}, {"root": "A", "notes": ["A", "B", "E"], "intervals": ["Second", "Fifth"], "interval_dict": {"B": "Second", "E": "Fifth"}, "name": "A Suspended Two"}, {"root": "A", "notes": ["A", "C#", "D#"], "intervals": ["Major Third", "Diminished Fifth"], "interval_dict": {"C#": "Major Third", "D#": "Diminished Fifth"}, "name": "A Flat Five"}]', 'B': '[{"root": "B", "notes": ["B", "D#", "F#"], "intervals": ["Major Third", "Fifth"], "interval_dict": {"D#": "Major Third", "F#": "Fifth"}, "name": "B Major"}, {"root": "B", "notes": ["B", "C#", "F#"], "intervals": ["Second", "Fifth"], "interval_dict": {"C#": "Second", "F#": "Fifth"}, "name": "B Suspended Two"}, {"root": "B", "notes": ["B", "E", "F#"], "intervals": ["Fourth", "Fifth"], "interval_dict": {"E": "Fourth", "F#": "Fifth"}, "name": "B Suspended Four"}]', 'C#': '[{"root": "C#", "notes": ["C#", "E", "G#"], "intervals": ["Minor Third", "Fifth"], "interval_dict": {"E": "Minor Third", "G#": "Fifth"}, "name": "C# Minor"}, {"root": "C#", "notes": ["C#", "D#", "G#"], "intervals": ["Second", "Fifth"], "interval_dict": {"D#": "Second", "G#": "Fifth"}, "name": "C# Suspended Two"}, {"root": "C#", "notes": ["C#", "F#", "G#"], "intervals": ["Fourth", "Fifth"], "interval_dict": {"F#": "Fourth", "G#": "Fifth"}, "name": "C# Suspended Four"}]', 'D#': '[{"root": "D#", "notes": ["D#", "F#", "A"], "intervals": ["Minor Third", "Diminished Fifth"], "interval_dict": {"F#": "Minor Third", "A": "Diminished Fifth"}, "name": "D# Diminished"}]'}};
 
-var eMajorScale = {
-    object: "scale",
-    root: "E",
-    notes: [
-        "D",
-        "E",
-        "F#",
-        "G",
-        "A",
-        "B",
-        "C#",
-        "D",
-    ]
-};
-
-var eMajorScale = {
-    object: "scale",
-    root: "E",
-    notes: [
-        "E",
-        "F#",
-        "G#",
-        "A",
-        "B",
-        "C#",
-        "D#",
-        "E",
-    ]
-};
-
-var eMajorScale = {
-    object: "scale",
-    root: "E",
-    notes: [
-        "E",
-        "F",
-        "F#",
-        "G",
-        "A",
-        "C",
-        "C#",
-        "D",
-        "B"
-    ]
-};
-
-var eMajorScale = {
-    object: "scale",
-    root: "E",
-    notes: [
-        "E",
-        "G#",
-        "A",
-        "C#",
-        "B",
-        "F#",
-        "D#",
-    ]
-};
 // Dummy Fretboard Object of Tuning E,A,D,G,B,E
 var fretboard = {
     object: "fretboard",
@@ -277,6 +204,8 @@ var VisualFretboard = function (fretboard, element) {
         }
     }
     
+    
+    
     /*
     function setVisibility(child) {
         var note = child.textContent;
@@ -286,40 +215,6 @@ var VisualFretboard = function (fretboard, element) {
     }*/
     
 
-    function createNotes(vis_string, container, string) {
-        that.noteElements = [];
-        for (var i = 0; i < string.notes.length; i++) {
-            var child = addChild(container, "li");
-            child.textContent = string.notes[i];
-            
-            that.noteElements.push(child);
-            
-            /* update v_fretboard's string object to have the notes */
-            //console.log(that.strings[0]);
-            vis_string.notes.push(child);
-            
-            //console.log("tes");
-            //console.log(eMajorScale);
-            //console.log(string.notes[i]);
-            //console.log(string.notes[i] in eMajorScale.notes);
-            
-            //setVisibility(child);
-            
-            if (!(eMajorScale.notes.includes(string.notes[i])) ) {
-                child.classList.add("invisible");
-            } else {
-                child.classList.remove("invisible");
-            }
-        }
-    }
-    
-    function generateNotesOnStrings () {
-        var containers = that.noteContainers;
-        var strings = that.fretboard.strings.slice().reverse();
-        for (var i = 0; i < containers.length; i++ ) {
-            createNotes(that.strings[i],containers[i], strings[i]);
-        }
-    }
     
     
     that.toggleNote = function (note) {
